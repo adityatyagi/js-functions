@@ -97,3 +97,90 @@ console.log(majorGreeting.regularFunction()); // Hello Aditya Tyagi
 console.log(majorGreeting.arrowFunction()); // Hello
 
 
+// FUNCTION CONTEXT
+function sayHey() {
+    console.log('Hey'); // Hey
+    console.log(this); // Window {...}
+}
+sayHey();
+
+// The value of this keyword changes because the execution context changed
+let greetingContext = {};
+greetingContext.sayHi = function () {
+    console.log('Hi'); // Hi
+    console.log(this); // greetingContext{..}
+}
+
+greetingContext.sayHi();
+
+// this in Function Constructors
+function sayHello() {
+    console.log('hey'); // hey
+    console.log(this); // [obj Object]
+}
+
+// creating an instance of Function Constructor
+let newGreets = new sayHello();
+
+// CALL
+let person1 = {
+    name: 'John',
+    age: 18
+}
+
+let person2 = {
+    name: 'Aditya',
+    age: 24
+}
+
+let greetPeople = function (greeting) {
+    console.log(greeting + " " + this.name);
+}
+
+greetPeople.call(person1, 'Hello');
+greetPeople.call(person2, 'Hey');
+
+// apply
+function introduction(name, profession) {
+    console.log(`My name is ${name} and my profession is ${profession}`);
+    console.log(this);
+}
+
+introduction('Aditya', 'Coder');
+
+// when you dont want to change the execution context i.e. the value of this keyword, you can pass undefined
+introduction.call(undefined, 'Ayush', 'Player');
+introduction.apply(undefined, ['Vivan', 'studying']);
+
+// bind
+let person3 = {
+    name: 'Mary',
+    getName: function () {
+        return this.name;
+    }
+}
+
+let person4 = {
+    name: 'Spiderman'
+};
+
+// the object passed to the .bind() will returns a copy of that function and change the execution context of that copy function
+// and assign it to the object passed to bind()
+let copyOfGetName = person3.getName.bind(person4);
+
+console.log(copyOfGetName()); // spiderman
+
+// SOME BUILT-IN FUNCTIONS
+
+// 1. eval
+let x = 1;
+let y = 2;
+console.log(eval('x+y+5'));
+
+console.log(parseInt('13', 10));
+console.log(parseFloat('13.67', 10));
+
+console.log(escape('text&%'));
+console.log(unescape('text%26%25'));
+
+
