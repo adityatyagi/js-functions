@@ -65,4 +65,35 @@ console.log(counter2());
 console.log(counter2());
 console.log(counter2());
 
+// Arrow Functions
+let greeting2 = () => {
+    return "hey from arrow function";
+}
+
+console.log(greeting2());
+
+// when only 1 line of code is present
+let greeting3 = () => "hey from arrow 2";
+console.log(greeting3());
+
+// fixed number of arguments being passed
+let sum = (num1, num2) => num1 + num2;
+console.log(sum(1, 2));
+
+// this keyword with arrow and regular functions
+let majorGreeting = {
+    name: "Aditya Tyagi",
+    regularFunction: function () {
+        // this is the majorGreeting object
+        return "Hello " + this.name;
+    },
+    arrowFunction: () => {
+        // this: is the window object and it looks for the name variable of the window (global object), which is not present
+        return "Hello " + this.name;
+    }
+}
+
+console.log(majorGreeting.regularFunction()); // Hello Aditya Tyagi
+console.log(majorGreeting.arrowFunction()); // Hello
+
 

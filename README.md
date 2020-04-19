@@ -76,4 +76,41 @@ A cloure is a phenomenon where we can hold on to a function scoped variable even
 *** 
 
 # ARROW FUNCTIONS
+1. Introduced in ES6  
+2. Simpler way to write function expressions.  
+3. Makes the code consice and more readable, shorter syntax  
+4. `this` derives its value from the enclosing lexical scope.  
 
+NOTE: They are not a substitue for the regular functions.  
+
+## SIDE EFFECTS
+1. Different behaviour of `this` keyword  
+2. No `arguments` object like we have with normal functions.  
+
+## SYNTAX
+You can ommit the `{ }` if there is only one statement within the arrow function body.  
+
+## this
+`this` refers to the owner of the function we are executing.  
+So, if its a standalone function, `this` refers to the global `window` object.  
+
+Unlike regular functions, the arrow functions does not have their own `this` value.  
+Moreover, the value of `this` is always inherited from the enclosing scope.  
+
+```javascript
+// this keyword with arrow and regular functions
+let majorGreeting = {
+    name: "Aditya Tyagi",
+    regularFunction: function () {
+        // this is the majorGreeting object
+        return "Hello " + this.name;
+    },
+    arrowFunction: () => {
+        // this: is the window object and it looks for the name variable of the window (global object), which is not present
+        return "Hello " + this.name;
+    }
+}
+
+console.log(majorGreeting.regularFunction()); // Hello Aditya Tyagi
+console.log(majorGreeting.arrowFunction()); // Hello
+```
