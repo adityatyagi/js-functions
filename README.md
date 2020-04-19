@@ -232,3 +232,65 @@ console.log(copyOfGetName()); // spiderman
 4. escape() - returns hex coding of the argument in the ISO LATIN 1 char set  
 5. unescape() - opp. of escape(). Returns ASCII string for the given input value
 
+***  
+
+# DEFAULT and REST PARAMTERS AND SPREAD OPERATOR
+
+### DEFUALT
+The default paramters should always come after the regular paramters.  
+
+```javascript
+// Default paramters
+function minorGreeting(greeting = 'Hey') {
+    console.log(greeting + ' John!');
+}
+
+minorGreeting(); // Hey John!
+minorGreeting('Hello'); // Hello John!
+```  
+
+### REST PARAMETERS  
+You can define a function with multiple arguments. When you dont know the number of arguments a function will get, use Rest parameters.  
+
+```javascript
+// REST PARAMETERS
+// message is the default parameter
+function finalGreeting(message, ...names) {
+    names.forEach(name => console.log(message + ' ' + name));
+}
+
+finalGreeting('Hey', 'Aditya', 'Ayush', 'Pankaj');
+```
+
+The Rest parameters like Default Parameters will always come last, i.e defined after the regular parameters.  It's in the name - REST i.e. it will always store the rest/remaining arguments in the array.  
+
+### SPREAD OPERATOR  
+The spread operator is opp. how a REST parameter works. It takes an array and spreads out it items and also assign the array items to individual parameters.
+
+```javascript
+// SPREAD OPERATOR
+function noMoreGreetings(name1, name2) {
+    console.log(`Hey ${name1} and ${name2}`);
+}
+
+let listOfNames = ['Aditya', 'Ayush'];
+noMoreGreetings(...listOfNames);
+
+// --------------------------------------
+function printABCD(a, b, c, d) {
+    console.log(a, b, c, d);
+}
+let letters = 'ABCD';
+printABCD(...letters);
+
+
+// --------------------------------------
+function printRest(p, q, r, s, ...t) {
+    console.log(p, q, r, s);
+    t.forEach(x => console.log(x));
+}
+let letters2 = 'PQRSTUVWXYZ';
+printRest(...letters2);
+
+```
+

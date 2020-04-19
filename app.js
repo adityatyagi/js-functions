@@ -183,4 +183,40 @@ console.log(parseFloat('13.67', 10));
 console.log(escape('text&%'));
 console.log(unescape('text%26%25'));
 
+// Default paramters
+function minorGreeting(greeting = 'Hey') {
+    console.log(greeting + ' John!');
+}
+
+minorGreeting(); // Hey John!
+minorGreeting('Hello'); // Hello John!
+
+// REST PARAMETERS
+function finalGreeting(message, ...names) {
+    names.forEach(name => console.log(message + ' ' + name));
+}
+
+finalGreeting('Hey', 'Aditya', 'Ayush', 'Pankaj');
+
+// SPREAD OPERATOR
+function noMoreGreetings(name1, name2) {
+    console.log(`Hey ${name1} and ${name2}`);
+}
+
+let listOfNames = ['Aditya', 'Ayush'];
+noMoreGreetings(...listOfNames);
+
+function printABCD(a, b, c, d) {
+    console.log(a, b, c, d);
+}
+let letters = 'ABCD';
+printABCD(...letters);
+
+function printRest(p, q, r, s, ...t) {
+    console.log(p, q, r, s);
+    t.forEach(x => console.log(x));
+}
+let letters2 = 'PQRSTUVWXYZ';
+printRest(...letters2);
+
 
